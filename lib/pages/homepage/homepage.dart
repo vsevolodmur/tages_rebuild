@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(99.0),
+        preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           elevation: 30.0,
           flexibleSpace: Container(
