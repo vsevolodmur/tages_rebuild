@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tages_rebuild/pages/homepage/topfirstclipper.dart';
+import 'package:tages_rebuild/widgets/homepagetopstack.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,23 +18,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Stack(
-        children: <Widget>[
-          ClipPath(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xff3827B4),
-                    Color(0xff6C18A4),
-                  ],
-                ),
-              ),
-            ),
-            clipper: TopFirstClipper(),
-          ),
-        ],
-      ),
+      body: TopStackClipper(),
     );
   }
 }
