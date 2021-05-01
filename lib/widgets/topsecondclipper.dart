@@ -1,60 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class TopSecondClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    final double _xScaling = size.width / 376;
-    final double _yScaling = size.height / 452;
-    path.lineTo(451.535 * _xScaling, 226.649 * _yScaling-125);
-    path.cubicTo(
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-      385.598 * _xScaling,
-      273.333 * _yScaling-125,
-      253.029 * _xScaling,
-      235.457 * _yScaling-125,
-    );
-    path.cubicTo(
-      120.46 * _xScaling,
-      197.581 * _yScaling-125,
-      -0.971008 * _xScaling,
-      211.057 * _yScaling-125,
-      -0.971008 * _xScaling,
-      211.057 * _yScaling-125,
-    );
-    path.cubicTo(
-      -0.971008 * _xScaling,
-      211.057 * _yScaling-125,
-      0.0289917 * _xScaling,
-      -124.997 * _yScaling-125,
-      0.0289917 * _xScaling,
-      -124.997 * _yScaling-125,
-    );
-    path.cubicTo(
-      0.0289917 * _xScaling,
-      -124.997 * _yScaling-125,
-      376 * _xScaling,
-      -124.997 * _yScaling-125,
-      376 * _xScaling,
-      -124.997 * _yScaling-125,
-    );
-    path.cubicTo(
-      376 * _xScaling,
-      -124.997 * _yScaling-125,
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-    );
-    path.cubicTo(
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-      451.535 * _xScaling,
-      226.649 * _yScaling-125,
-    );
+
+    final double _xScaling = size.width / 377;
+    final double _yScaling = size.height / 185.46;
+    print( 185.46 * _yScaling);
+    path.lineTo(0, 161.06 * _yScaling);
+    path.quadraticBezierTo(121.43 * _xScaling, 147.58 * _yScaling,
+        254 * _xScaling, 185.46 * _yScaling);
+    path.quadraticBezierTo(386.57 * _xScaling, 223.33 * _yScaling,
+        451.51 * _xScaling, 176.65 * _yScaling);
+    path.lineTo(451.51 * _xScaling, 0);
+
     return path;
   }
 
