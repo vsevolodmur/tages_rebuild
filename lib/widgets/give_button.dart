@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
 
 class GiveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final BalanceCubit balanceCubit = BlocProvider.of<BalanceCubit>(context);
     return Container(
       height: double.infinity,
       child: Align(
@@ -12,7 +15,7 @@ class GiveButton extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 60 / 671,
           child: FloatingActionButton.extended(
             backgroundColor: Color(0xffE61EAD),
-            onPressed: () => {},
+            onPressed: () => balanceCubit.changeBalance(),
             label: Text(
               'Выдать сумму',
               style: TextStyle(
