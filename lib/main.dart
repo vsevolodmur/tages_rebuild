@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tages_rebuild/pages/homepage/homepage.dart';
-import 'package:tages_rebuild/src/balance/balance_repository.dart';
 import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
 
 void main() {
@@ -10,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final bankNotes = BankNotes();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: BlocProvider<BalanceCubit>(
-          create: (context) => BalanceCubit(bankNotes),
+          create: (context) => BalanceCubit(),
           child: HomePage(),
         ),
       ),
