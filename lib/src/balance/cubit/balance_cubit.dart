@@ -1,18 +1,37 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:tages_rebuild/src/balance/balance_repository.dart';
+import 'package:tages_rebuild/src/balance/cubit/money_request_cubit.dart';
 
 part 'balance_state.dart';
 
 class BalanceCubit extends Cubit<BalanceState> {
-  BalanceCubit()
+  final MoneyRequestCubit moneyRequestCubit;
+  BalanceCubit({@required this.moneyRequestCubit})
       : super(
-          BalanceInitialState(bankNotes: BankNotes().bankNotes),
+          BalanceInitialState(
+              bankNotes: BankNotes().bankNotes,
+              bankNotesGiven: BankNotes().bankNotes),
         );
 
   void changeBalance() {
-    Map<String, int> newStateBankNotes = Map.from(state.bankNotes);
-    newStateBankNotes.update('500 рублей', (value) => value + 1);
-    emit(BalanceChangeState(bankNotes: newStateBankNotes));
+    final Map<String, int> bankNotesLeftInBank = Map.from(state.bankNotes);
+    final Map<String, int> bankNotesGiven = Map.from(state.bankNotesGiven);
+    if (moneyRequestCubit.state is MoneyRequestInitial) {
+    } else if (int.parse(moneyRequestCubit.state.requestedAmount) > 10) {
+      emit(NoMoneyState(bankNotes: bankNotesLeftInBank));
+    } else {
+      bankNotesLeftInBank.update(
+          '500',
+          (value) =>
+              value + int.parse(moneyRequestCubit.state.requestedAmount));
+      bankNotesGiven.update(
+          '500',
+          (value) =>
+              value - int.parse(moneyRequestCubit.state.requestedAmount));
+
+      emit(BalanceChangeState(
+          bankNotes: bankNotesLeftInBank, bankNotesGiven: bankNotesGiven));
+    }
   }
 }

@@ -35,36 +35,47 @@ class BankNotesBalance extends StatelessWidget {
                   top: MediaQuery.of(context).size.height *
                       15 /
                       referenceHeight),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Wrap(
-                    direction: Axis.vertical,
-                    alignment: WrapAlignment.start,
-                    spacing: MediaQuery.of(context).size.height *
-                        6 /
-                        referenceHeight,
-                    children: [
-                      Text('50 Х 100 рублей'),
-                      Text('100 Х 200 рублей'),
-                      Text('100 Х 2000 рублей'),
-                    ],
-                  ),
-                  Spacer(),
-                  Wrap(
-                    direction: Axis.vertical,
-                    alignment: WrapAlignment.start,
-                    spacing: MediaQuery.of(context).size.height *
-                        6 /
-                        referenceHeight,
-                    children: [
-                      Text('5 X 500 рублей'),
-                      Text('10 Х 1000 рублей'),
-                      Text('10 Х 5000 рублей'),
-                    ],
-                  ),
-                ],
-              ),
+              child: BlocBuilder<BalanceCubit, BalanceState>(
+                  builder: (context, state) {
+                final List<String> bankNotesNominal =
+                    state.bankNotes.keys.toList();
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Wrap(
+                      direction: Axis.vertical,
+                      alignment: WrapAlignment.start,
+                      spacing: MediaQuery.of(context).size.height *
+                          6 /
+                          referenceHeight,
+                      children: [
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[0]]} Х ${bankNotesNominal[0]} рублей'),
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[1]]} Х ${bankNotesNominal[1]} рублей'),
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[2]]} Х ${bankNotesNominal[2]} рублей'),
+                      ],
+                    ),
+                    Spacer(),
+                    Wrap(
+                      direction: Axis.vertical,
+                      alignment: WrapAlignment.start,
+                      spacing: MediaQuery.of(context).size.height *
+                          6 /
+                          referenceHeight,
+                      children: [
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[3]]} Х ${bankNotesNominal[3]} рублей'),
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[4]]} Х ${bankNotesNominal[4]} рублей'),
+                        Text(
+                            '${state.bankNotes[bankNotesNominal[5]]} Х ${bankNotesNominal[5]} рублей'),
+                      ],
+                    ),
+                  ],
+                );
+              }),
             ),
           ],
         ),

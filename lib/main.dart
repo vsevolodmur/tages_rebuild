@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tages_rebuild/pages/homepage/homepage.dart';
 import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/money_request_cubit.dart';
 
 void main() {
   Paint.enableDithering = true;
@@ -30,8 +31,17 @@ class MyApp extends StatelessWidget {
             bodyColor: Color(0xff3827B4),
           ),
         ),
-        home: BlocProvider<BalanceCubit>(
-          create: (context) => BalanceCubit(),
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider<MoneyRequestCubit>(
+              create: (context) => MoneyRequestCubit(),
+            ),
+            BlocProvider<BalanceCubit>(
+              create: (context) => BalanceCubit(
+                moneyRequestCubit: BlocProvider.of<MoneyRequestCubit>(context),
+              ),
+            )
+          ],
           child: HomePage(),
         ),
       ),

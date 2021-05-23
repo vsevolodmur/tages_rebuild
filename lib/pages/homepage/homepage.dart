@@ -39,7 +39,10 @@ class HomePage extends StatelessWidget {
           ),
           Flexible(
             flex: 128,
-            child: BankNotesGiven(),
+            child: BankNotesGiven(
+              referenceHeight: referenceHeight,
+              referenceWidth: referenceWidth,
+            ),
           ),
           Flexible(
             flex: 10,
