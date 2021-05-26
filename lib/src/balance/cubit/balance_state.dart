@@ -23,5 +23,6 @@ class BalanceChangeState extends BalanceState {
 
 class NoMoneyState extends BalanceState {
   final Map<String, int> bankNotes;
-  NoMoneyState({@required this.bankNotes});
+  final Map<String, int> bankNotesGiven;
+  NoMoneyState({@required this.bankNotes, @required this.bankNotesGiven});
 }

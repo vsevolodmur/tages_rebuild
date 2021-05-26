@@ -17,10 +17,22 @@ class BalanceCubit extends Cubit<BalanceState> {
   void changeBalance() {
     final Map<String, int> bankNotesLeftInBank = Map.from(state.bankNotes);
     final Map<String, int> bankNotesGiven = Map.from(state.bankNotesGiven);
+    bankNotesGiven.updateAll((key, value) => 0);
     if (moneyRequestCubit.state is MoneyRequestInitial) {
     } else if (int.parse(moneyRequestCubit.state.requestedAmount) > 10) {
-      emit(NoMoneyState(bankNotes: bankNotesLeftInBank));
+      emit(
+        NoMoneyState(
+            bankNotes: bankNotesLeftInBank,
+            bankNotesGiven: state.bankNotesGiven),
+      );
     } else {
+      int moneyInBank = 0;
+      bankNotesLeftInBank.forEach(
+        (key, value) {
+          moneyInBank += int.parse(key) * value;
+        },
+      );
+
       bankNotesLeftInBank.update(
           '500',
           (value) =>
