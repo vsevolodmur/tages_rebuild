@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/balance/balance_cubit.dart';
 
 class BankNotesBalance extends StatelessWidget {
   final int referenceHeight;

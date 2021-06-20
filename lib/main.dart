@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tages_rebuild/pages/homepage/homepage.dart';
-import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
-import 'package:tages_rebuild/src/balance/cubit/money_request_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/balance/balance_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/money_request/money_request_cubit.dart';
 
 void main() {
   Paint.enableDithering = true;

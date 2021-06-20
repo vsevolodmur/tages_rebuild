@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tages_rebuild/src/balance/cubit/balance_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/balance/balance_cubit.dart';
+
+import 'banknotes_given_text.dart';
 
 class BankNotesGiven extends StatelessWidget {
   final int referenceHeight;
@@ -12,34 +14,19 @@ class BankNotesGiven extends StatelessWidget {
     return BlocBuilder<BalanceCubit, BalanceState>(builder: (context, state) {
       if (state is BalanceInitialState) {
         return Container(
-          height: double.infinity,
-          padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 41 / 770),
-          child: Text(
-            'Банкомат готов \nк выдаче наличных',
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            style: TextStyle(
-              color: Color(0xffE61EAD),
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        );
+            height: double.infinity,
+            padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 41 / 770),
+            child: BankNotesGivenText(
+              text: 'Банкомат готов \nк выдаче наличных',
+            ));
       } else if (state is NoMoneyState) {
         return Container(
           height: double.infinity,
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.height * 41 / 770),
-          child: Text(
-            'В банкомате отсутствует\n запрашиваемая сумма',
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            style: TextStyle(
-              color: Color(0xffE61EAD),
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
+          child: BankNotesGivenText(
+            text: 'В банкомате отсутствует\n запрашиваемая сумма',
           ),
         );
       } else {
@@ -56,7 +43,7 @@ class BankNotesGiven extends StatelessWidget {
               children: <Widget>[
                 Container(
                   child: Text(
-                    'Баланс банкомата',
+                    'Банкомат выдал следующие купюры',
                     style: TextStyle(
                       color: Color(0xffA3A2AC),
                       fontSize: 13,

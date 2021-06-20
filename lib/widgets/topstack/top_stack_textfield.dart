@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tages_rebuild/src/balance/cubit/money_request_cubit.dart';
+import 'package:tages_rebuild/src/balance/cubit/money_request/money_request_cubit.dart';
 
 class TopStackTextField extends StatelessWidget {
   @override

@@ -7,4 +7,8 @@ class BankNotes {
     '1000': 10,
     '5000': 10,
   };
+  BankNotes();
+  BankNotes.given() {
+    bankNotes.updateAll((key, value) => 0);
+  }
 }
